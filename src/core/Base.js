@@ -10,7 +10,6 @@ import { LogoHeader, LogoFooter } from "../assets/logo.js";
 const Base = ({
   title = "My Title",
   description = "My desription",
-  className = "bg-dark text-white p-4",
   children
 }) => {
   return (
@@ -19,10 +18,8 @@ const Base = ({
         size="large"
         style={commonHeader}
         as="h2"
-        dividing
         textAlign="center"
       >
-        {/* {title.toLocaleUpperCase()} */}
         <LogoHeader />
       </Header>
       <Container>
@@ -52,6 +49,6 @@ const commonFooter = {
   left : 0,
   backgroundColor: "#FBC91B",
   fontWeight: "600",
-  padding: "50px",
+  padding: "35px",
   width: "100%"
 };

@@ -9,7 +9,7 @@ import { Menu } from "semantic-ui-react";
 const CustomFilter = ({onTabSwitch}) => {
   const [activeItem, setActiceItem] = useState("New");
   const handleItemClick = (e, { name }) => {
-    let value = name === "New" ? "newstories" : "paststories"
+    let value = name === "New" ? "newstories" : "showstories"
     setActiceItem(name);
     onTabSwitch(value);
   };

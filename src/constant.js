@@ -6,3 +6,4 @@ export default function setAxiosDefaultHeaders() {
   axios.defaults.baseURL = API;
   axios.defaults.headers.post.Accept = 'application/json';
 }
+export const dummyText = "Lorem Ipsum has been the industry's standard dummy text ever since Lorem Ipsum has been the industry's standard dummy text ever since scrambled"
