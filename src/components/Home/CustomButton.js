@@ -6,16 +6,12 @@ import { Button } from "semantic-ui-react";
  * @function CustomButton
  **/
 
-const CustomButton = ({ title }) => {
+const CustomButton = ({ title,customButtomStyle ,onLoadMore}) => {
   return (
     <Fragment>
       <Button
-        style={{
-          width: "100%",
-          display: "block",
-          bottom: "0",
-        //   position: "fixed",
-        }}
+        style={customButtomStyle}
+        onClick ={onLoadMore}
       >
         {title}
       </Button>

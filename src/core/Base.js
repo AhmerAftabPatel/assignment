@@ -1,5 +1,5 @@
 import React, { Fragment } from "react";
-import { Container, Header, Menu } from "semantic-ui-react";
+import { Container, Header } from "semantic-ui-react";
 import { LogoHeader, LogoFooter } from "../assets/logo.js";
 
 /**
@@ -25,7 +25,7 @@ const Base = ({
         {/* {title.toLocaleUpperCase()} */}
         <LogoHeader />
       </Header>
-      <Container style={{ overflowX: "hidden", overflowY: "auto" }}>
+      <Container>
         {children}
       </Container>
       <Header as="h2" size="large" textAlign="center" style={commonFooter}>
@@ -47,10 +47,10 @@ const commonHeader = {
 };
 
 const commonFooter = {
-  position: "fixed",
+  position: "relative",
   bottom: 0,
+  left : 0,
   backgroundColor: "#FBC91B",
-  display: "block",
   fontWeight: "600",
   padding: "50px",
   width: "100%"
