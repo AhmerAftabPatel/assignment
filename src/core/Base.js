@@ -1,10 +1,11 @@
 import React, { Fragment } from "react";
 import { Container, Header } from "semantic-ui-react";
 import { LogoHeader, LogoFooter } from "../assets/logo.js";
-import PropTypes from 'prop-types';
+import PropTypes from "prop-types";
 /**
  * @author
  * @function Base
+ * Base higher order component with header and footer
  **/
 
 const Base = ({
@@ -12,19 +13,13 @@ const Base = ({
   description = "My desription",
   children
 }) => {
+  
   return (
     <Fragment>
-      <Header
-        size="large"
-        style={commonHeader}
-        as="h2"
-        textAlign="center"
-      >
+      <Header size="large" style={commonHeader} as="h2" textAlign="center">
         <LogoHeader />
       </Header>
-      <Container>
-        {children}
-      </Container>
+      <Container style={{ minHeight: "650px" }}>{children}</Container>
       <Header as="h2" size="large" textAlign="center" style={commonFooter}>
         <LogoFooter />
       </Header>
@@ -34,7 +29,7 @@ const Base = ({
 
 Base.propTypes = {
   children: PropTypes.element.isRequired
-}
+};
 
 export default Base;
 
@@ -50,7 +45,7 @@ const commonHeader = {
 const commonFooter = {
   position: "relative",
   bottom: 0,
-  left : 0,
+  left: 0,
   backgroundColor: "#FBC91B",
   fontWeight: "600",
   padding: "35px",

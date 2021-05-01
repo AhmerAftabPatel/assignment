@@ -46,7 +46,7 @@ const Home = props => {
         {nw ?<Animated
           animationIn="fadeInUp"
           isVisible={true}
-          animationInDelay={100 * index}
+          animationInDelay={100 * index > 4 ? newsLimit - index : index}
         >
           <CustomCard id={nw} key={nw}/>
         </Animated> : ""}
@@ -82,6 +82,7 @@ const Home = props => {
 
 export default Home;
 
+//loadmore styled
 const buttonStyle = {
   width: "100%",
   position: "static",

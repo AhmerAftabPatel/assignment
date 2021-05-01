@@ -7,7 +7,7 @@ import { dummyText } from "../../constant";
 import PropTypes from 'prop-types';
 /**
  * @author
- * @function CustonCard
+ * @function CustomCard
  **/
 
 const CustomCard = ({ id }) => {
@@ -26,10 +26,13 @@ const CustomCard = ({ id }) => {
   useEffect(() => {
     preload(id);
   }, [id]);
+
+  //making sure we dont render null values
   if(item === null){
     return ""
   }
-  let date = item.time && item.time !== null ? new Date(item.time * 1000) : "";
+  //calculating unix time to date
+  const date = item.time && item.time !== null ? new Date(item.time * 1000) : "";
   return (
     <Fragment>
       <Card style={cardStyle} onClick={() => changeLocation(item.url)}>
