@@ -1,15 +1,15 @@
 import React, { Fragment, useState } from "react";
 import { Menu } from "semantic-ui-react";
-
+import PropTypes from 'prop-types';
 /**
  * @author
  * @function CustomFilter
  **/
 
-const CustomFilter = ({onTabSwitch}) => {
+const CustomFilter = ({ onTabSwitch, Results }) => {
   const [activeItem, setActiceItem] = useState("New");
   const handleItemClick = (e, { name }) => {
-    let value = name === "New" ? "newstories" : "showstories"
+    let value = name === "New" ? "newstories" : "showstories";
     setActiceItem(name);
     onTabSwitch(value);
   };
@@ -38,10 +38,23 @@ const CustomFilter = ({onTabSwitch}) => {
           )}
           onClick={handleItemClick}
         />
+        <Menu.Menu position="right">
+          <Menu.Item
+            active={activeItem === "logout"}
+            onClick={handleItemClick}
+          >
+            <p style={secondaryText}>{Results ? Results : 0} results found.</p>
+          </Menu.Item>
+        </Menu.Menu>
       </Menu>
     </Fragment>
   );
 };
+
+CustomFilter.propTypes = {
+  Results: PropTypes.number.isRequired,
+  onTabSwitch: PropTypes.func.isRequired,
+}
 
 export default CustomFilter;
 const styleFixed = {
@@ -60,3 +73,4 @@ const menuStyleDefault = {
   background: "#F2F2F2",
   color: "#000000"
 };
+const secondaryText = { fontWeight: "lighter", fontSize: "10px" };

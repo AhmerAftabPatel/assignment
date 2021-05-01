@@ -1,6 +1,6 @@
 import React, { Fragment, useEffect, useState } from "react";
 import CustomButton from "../components/Home/CustomButton";
-import CustonCard from "../components/Home/CustomCard";
+import CustomCard from "../components/Home/CustomCard";
 import CustomFilter from "../components/Home/CustomFilter";
 import Base from "../core/Base";
 import { getNews } from "../helpers/News";
@@ -18,11 +18,13 @@ const Home = props => {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
   const [newsLimit, setNewsLimit] = useState(4);
+  const [totallRecords, setToralRecords] = useState(0);
   const preload = (limit, url) => {
     setLoading(true);
     getNews(url)
       .then(res => {
         let data = res.data;
+        setToralRecords(res.data.length);
         setNews(data.slice(0, limit));
         setLoading(false);
         setError("");
@@ -35,18 +37,19 @@ const Home = props => {
   };
   const TabSwitch = value => {
     setUrl(value);
+    setNewsLimit(4);
   };
   // looping news cards
   const NewsCard = news.map((nw, index) => {
     return (
       <>
-        <Animated
+        {nw ?<Animated
           animationIn="fadeInUp"
           isVisible={true}
-          animationInDelay={200 * index}
+          animationInDelay={100 * index}
         >
-          <CustonCard id={nw} key={nw.id}/>
-        </Animated>
+          <CustomCard id={nw} key={nw}/>
+        </Animated> : ""}
       </>
     );
   });
@@ -54,11 +57,12 @@ const Home = props => {
   useEffect(() => {
     preload(newsLimit, apiUrl);
   }, [newsLimit, apiUrl]);
+  
   return (
     <Fragment>
       <Base title="HackerNews">
         <ErrorMessage description={error} />
-        <CustomFilter onTabSwitch={TabSwitch} />
+        <CustomFilter onTabSwitch={TabSwitch} Results = {totallRecords}/>
         {NewsCard}
         {loading ? (
           <Loader active inline="centered" />

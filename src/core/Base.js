@@ -1,7 +1,7 @@
 import React, { Fragment } from "react";
 import { Container, Header } from "semantic-ui-react";
 import { LogoHeader, LogoFooter } from "../assets/logo.js";
-
+import PropTypes from 'prop-types';
 /**
  * @author
  * @function Base
@@ -31,6 +31,10 @@ const Base = ({
     </Fragment>
   );
 };
+
+Base.propTypes = {
+  children: PropTypes.element.isRequired
+}
 
 export default Base;
 

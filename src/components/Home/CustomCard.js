@@ -4,13 +4,13 @@ import { TimeLogo } from "../../assets/logo";
 import { getNewsByItem } from "../../helpers/News";
 import ReactTimeAgo from "react-time-ago";
 import { dummyText } from "../../constant";
-
+import PropTypes from 'prop-types';
 /**
  * @author
  * @function CustonCard
  **/
 
-const CustonCard = ({ id }) => {
+const CustomCard = ({ id }) => {
   const [item, setItem] = useState([]);
   const preload = id => {
     getNewsByItem(id)
@@ -26,7 +26,10 @@ const CustonCard = ({ id }) => {
   useEffect(() => {
     preload(id);
   }, [id]);
-  let date = item.time ? new Date(item.time * 1000) : "";
+  if(item === null){
+    return ""
+  }
+  let date = item.time && item.time !== null ? new Date(item.time * 1000) : "";
   return (
     <Fragment>
       <Card style={cardStyle} onClick={() => changeLocation(item.url)}>
@@ -47,8 +50,11 @@ const CustonCard = ({ id }) => {
     </Fragment>
   );
 };
+CustomCard.propTypes = {
+  id: PropTypes.string.isRequired
+}
 
-export default CustonCard;
+export default CustomCard;
 
 const cardStyle = {
   width: "100%",

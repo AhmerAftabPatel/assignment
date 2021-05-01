@@ -1,5 +1,5 @@
 import axios from 'axios';
-const API = "https://hacker-news.firebaseio.com/v0/"
+export const API = "https://hacker-news.firebaseio.com/v0/"
 export default function setAxiosDefaultHeaders() {
  
   axios.defaults.headers.post['Content-Type'] = 'application/json';
